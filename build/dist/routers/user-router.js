@@ -22,7 +22,7 @@ exports.userRouter = express_1.default.Router();
 //Use login
 exports.userRouter.use(authentification_middleware_1.authentificationMiddleware);
 //Find Users                                 
-exports.userRouter.get("/", authorization_middleware_1.authorizationMiddleware(["Admin"], false), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.userRouter.get("/", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let allUsers = yield user_service_1.getAllUsersService();
         res.json(allUsers);

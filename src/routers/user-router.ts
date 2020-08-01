@@ -12,7 +12,7 @@ export const userRouter = express.Router()
 userRouter.use(authentificationMiddleware)
 
 //Find Users                                 
-userRouter.get("/", authorizationMiddleware(["Admin"], false), async (req:Request, res:Response, next:NextFunction)=>{
+userRouter.get("/", async (req:Request, res:Response, next:NextFunction)=>{
     try {
         let allUsers = await getAllUsersService() 
         res.json(allUsers)
