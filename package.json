@@ -14,11 +14,7 @@
   "devDependencies": {
     "@types/express": "^4.17.6",
     "@types/express-session": "^1.17.0",
-<<<<<<< HEAD:User-Service/package.json
     "@types/jsonwebtoken": "^8.5.0",
-=======
-    "@types/jest": "^26.0.8",
->>>>>>> 5c5769386360f891933598a8ca831959770dd715:User-Service/user-backend/package.json
     "@types/pg": "^7.14.3",
     "jest": "^26.2.1",
     "nodemon": "^2.0.4",
