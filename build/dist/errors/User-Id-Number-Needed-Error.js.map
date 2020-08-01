@@ -1,0 +1,1 @@
+{"version":3,"file":"User-Id-Number-Needed-Error.js","sourceRoot":"","sources":["../../../src/errors/User-Id-Number-Needed-Error.ts"],"names":[],"mappings":";;;AACA,6CAAyC;AAEzC,2DAA2D;AAE3D,MAAa,uBAAwB,SAAQ,sBAAS;IAClD;QACI,IAAI,GAAG,GAAU,QAAQ,CAAA;QACzB,KAAK,CAAE,GAAG,EAAE,wBAAwB,GAAG,CAAC,OAAO,EAAE,EAAE,CAAC,CAAA;IACxD,CAAC;CACJ;AALD,0DAKC"}
