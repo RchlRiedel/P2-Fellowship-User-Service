@@ -5,21 +5,30 @@ import { authorizationMiddleware } from '../middleware/authorization-middleware'
 import { User } from '../models/User'
 import { UserIdNumberNeededError } from '../errors/User-Id-Number-Needed-Error'
 import { getAllUsersService, getUserByIDService, updateUserService } from '../services/user-service'
+import { allUserProfiles } from '../daos/SQL/users-dao'
 
 export const userRouter = express.Router()
 
 //Use login
 userRouter.use(authentificationMiddleware)
 
-//Find Users                                 
-userRouter.get("/", authorizationMiddleware(["Admin"], false), async (req:Request, res:Response, next:NextFunction)=>{
+//Find Users for admin                                 
+userRouter.get("/", authorizationMiddleware(["Admin"], true), async (req:Request, res:Response, next:NextFunction)=>{
     try {
         let allUsers = await getAllUsersService() 
         res.json(allUsers)
+        
     } catch(e){
         next(e)
     }})
-
+//FInd Users for users
+userRouter.get("/profiles",authorizationMiddleware(["User", "Admin"], true), async (req:Request, res:Response, next:NextFunction)=>{
+    try {
+        let allUsers2 = await allUserProfiles() 
+        res.json(allUsers2)
+    } catch(e){
+        next(e)
+    }})
 //Get user profile information                       I don't think I need anything in this array
 //ON SECOND THOUGHT this would be too complicated... maybe later
 // userRouter.get("/-profiles", authorizationMiddleware([], true), async (req:Request, res:Response, next:NextFunction)=>{
@@ -46,7 +55,7 @@ userRouter.get("/:userId",  authorizationMiddleware(["Admin"], true), async (req
 })
 
 //Update user
-userRouter.patch("/update/:userId", async (req:Request, res: Response, next:NextFunction) => {
+userRouter.patch("/update/:userId", authorizationMiddleware(["Admin"], true), async (req:Request, res: Response, next:NextFunction) => {
     let {userId} = req.params
     let {username, password, firstName, lastName, affiliation, placesVisited, address, email, role, image } = req.body
     let currentUserId = +userId
