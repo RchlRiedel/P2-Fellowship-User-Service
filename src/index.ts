@@ -16,6 +16,7 @@ import { saveNewUserService, getUserByUserNameAndPasswordService } from "./servi
 //import { userTopic } from "./messaging"
 import './event-listeners/new-user' //so that file will actually excetute 
 import './event-listeners/updated-user' //try
+// import { JWTVerifyMiddleware } from "./middleware/jwt-verify-middleware"
 
 //console.log(userTopic); //see what the topic is
 
@@ -29,6 +30,8 @@ app.use(loggingMiddleware)
 app.use(corsFilter)
 
 app.use(sessionMiddleware)
+
+// app.use(JWTVerifyMiddleware)
 
 app.use("/users", userRouter)
 
@@ -65,8 +68,6 @@ app.post("/register", async (req:Request, res:Response, next:NextFunction)=>{
 
         try {
             let savedUser = await saveNewUserService(newUser) //using service function instead of DAO
-            let token = jwt.sign(savedUser, 'thisIsASecret',{expiresIn: '1h'})
-            res.header('Authorization', `Bearer ${token}`)
             req.session.user = savedUser //set session user to current, new user
             res.json(savedUser) 
         } catch(e) {
@@ -84,6 +85,8 @@ app.post("/login", async (req: Request, res: Response, next: NextFunction)=>{
     } else {
        try {
             let user =await getUserByUserNameAndPasswordService(username, password)
+            let token = jwt.sign(user, 'thisIsASecret',{expiresIn: '1h'})
+            res.header('Authorization', `Bearer ${token}`)
             req.session.user = user
             res.json(user)
        } catch(e) {
