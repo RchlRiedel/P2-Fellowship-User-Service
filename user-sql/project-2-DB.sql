@@ -1,4 +1,4 @@
-set schema 'project_2';
+/*set schema 'project_2';
 
 insert into users ("username", "password", "first_name", "last_name", "affiliation", "places_visited", "address", "email", "role", "image")
 	values ('Mithrandir', 'YouShallNotPass', 'Gandalf', null, 'Fellowship', 1233, null, 'shadofaxTheFast@email.com', 'Admin', null),
@@ -8,3 +8,4 @@ insert into users ("username", "password", "first_name", "last_name", "affiliati
 		   ('Dernhelm', 'IAmNoMan', 'Eowyn', null, 'Rohan', 27, 'Rohan', 'shieldMaiden@email.com', 'User', null),
 		   ('NotCountDooku', 'WiseWhiteWizard', 'Saruman', null, 'Sauron', 897, 'Isengard', 'sharkley@email.com', 'User', null);
 select * from users;
+*/
