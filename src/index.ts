@@ -10,6 +10,7 @@ import { NoUserLoggedInError } from "./errors/No-User-Logged-In-Error"
 import { loggingMiddleware } from "./middleware/logging-middleware"
 import { sessionMiddleware } from "./middleware/session-middleware"
 import { corsFilter } from "./middleware/cors-filter"
+import jwt from 'jsonwebtoken'
 import { saveNewUserService, getUserByUserNameAndPasswordService } from "./services/user-service"
 
 //import { userTopic } from "./messaging"
@@ -64,6 +65,8 @@ app.post("/register", async (req:Request, res:Response, next:NextFunction)=>{
 
         try {
             let savedUser = await saveNewUserService(newUser) //using service function instead of DAO
+            let token = jwt.sign(savedUser, 'thisIsASecret',{expiresIn: '1h'})
+            res.header('Authorization', `Bearer ${token}`)
             req.session.user = savedUser //set session user to current, new user
             res.json(savedUser) 
         } catch(e) {
