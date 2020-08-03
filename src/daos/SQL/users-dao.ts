@@ -26,6 +26,7 @@ export async function getAllUsers(): Promise<User[]>{
     }
 }
 
+//PLEASE EXPLAIN
 export async function allUserProfiles(): Promise<User[]>{
     //first, decleare a client
     let client:PoolClient
@@ -33,8 +34,8 @@ export async function allUserProfiles(): Promise<User[]>{
         //get connection
         client = await connectionPool.connect()
         //send query
-        let results = await client.query(`select u.username, u.first_name,u.last_name,u.affiliation ,u.places_visited, u.email, u.image from project_2.users u;`)
-        //return results
+        let results = await client.query(`select u."username", u."first_name", u."last_name", u."affiliation" , u."places_visited", u."email", u."image" from project_2.users u;`)
+        //return results - but will they be user objects?
         return results.rows.map(UserDTOtoUserConverter)
     } catch(e) {
         //if we get an error we don't know
@@ -69,7 +70,7 @@ export async function findUsersById (userId: number): Promise<User> {
     }
 }
 
-//update a user info
+//update a user info (works for admin or not))
 export async function updateUser (updatedUser:User): Promise <User> {
     let client: PoolClient
 

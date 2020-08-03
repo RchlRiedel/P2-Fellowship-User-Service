@@ -1,43 +1,35 @@
 
 import express, { Request, Response, NextFunction } from 'express'
-import { authentificationMiddleware } from '../middleware/authentification-middleware'
+import { authenticationMiddleware } from '../middleware/authentication-middleware'
 import { authorizationMiddleware } from '../middleware/authorization-middleware'
 import { User } from '../models/User'
 import { UserIdNumberNeededError } from '../errors/User-Id-Number-Needed-Error'
 import { getAllUsersService, getUserByIDService, updateUserService } from '../services/user-service'
-import { allUserProfiles } from '../daos/SQL/users-dao'
+import { allUserProfiles, findUsersById } from '../daos/SQL/users-dao'
 
 export const userRouter = express.Router()
 
 //Use login
-userRouter.use(authentificationMiddleware)
+userRouter.use(authenticationMiddleware)
 
 //Find Users for admin                                 
-userRouter.get("/", authorizationMiddleware(["Admin"], true), async (req:Request, res:Response, next:NextFunction)=>{
+userRouter.get("/", authorizationMiddleware(["Admin"], false), async (req:Request, res:Response, next:NextFunction)=>{
     try {
         let allUsers = await getAllUsersService() 
         res.json(allUsers)
-        
     } catch(e){
         next(e)
-    }})
-//FInd Users for users
+    }
+})
+
+//Find Users for users                                              
 userRouter.get("/profiles",authorizationMiddleware(["User", "Admin"], true), async (req:Request, res:Response, next:NextFunction)=>{
     try {
         let allUsers2 = await allUserProfiles() 
         res.json(allUsers2)
     } catch(e){
         next(e)
-    }})
-//Get user profile information                       I don't think I need anything in this array
-//ON SECOND THOUGHT this would be too complicated... maybe later
-// userRouter.get("/-profiles", authorizationMiddleware([], true), async (req:Request, res:Response, next:NextFunction)=>{
-//     try {
-//         let allUserProfiles = await getAllUserProfiles() 
-//         res.json(allUserProfiles)
-//     } catch(e){
-//         next(e)
-//     }})
+}})
     
 //Find user by id
 userRouter.get("/:userId",  authorizationMiddleware(["Admin"], true), async (req:Request, res:Response, next:NextFunction)=>{
@@ -55,9 +47,9 @@ userRouter.get("/:userId",  authorizationMiddleware(["Admin"], true), async (req
 })
 
 //Update user
-userRouter.patch("/update/:userId", authorizationMiddleware(["Admin"], true), async (req:Request, res: Response, next:NextFunction) => {
+userRouter.patch("/update/profile/:userId", authorizationMiddleware(["User", "Admin"], true), async (req:Request, res: Response, next:NextFunction) => {
     let {userId} = req.params
-    let {username, password, firstName, lastName, affiliation, placesVisited, address, email, role, image } = req.body
+    let {username, password, firstName, lastName, affiliation, address, email, image } = req.body
     let currentUserId = +userId
     if (!currentUserId || isNaN(+currentUserId)){
         next (new UserIdNumberNeededError)
@@ -69,7 +61,49 @@ userRouter.patch("/update/:userId", authorizationMiddleware(["Admin"], true), as
             firstName,
             lastName,
             affiliation,
-            placesVisited,
+            placesVisited: (await getUserByIDService(currentUserId)).placesVisited, 
+            //no one should have power to change this; it does so automatically when updating location
+            address,
+            email,
+            role: "User", 
+            //check to make sure that if admin updates their profile, they use the other one (control with links in nav bar?)
+            image 
+        }
+        updatedUser.username = username || undefined
+        updatedUser.password = password || undefined
+        updatedUser.firstName = firstName || undefined
+        updatedUser.lastName = lastName || undefined
+        updatedUser.affiliation = affiliation || undefined
+        updatedUser.address = address || undefined
+        updatedUser.email = email || undefined
+        updatedUser.image = image || undefined
+        
+        try {
+            let updatedUserResults = await updateUserService(updatedUser)
+            res.json(updatedUserResults)
+        } catch (e) {
+            next
+        }
+    }
+})
+
+//Update user FOR ADMIN
+userRouter.patch("/update/:userId", authorizationMiddleware(["Admin"], false), async (req:Request, res: Response, next:NextFunction) => {
+    let {userId} = req.params
+    let {username, password, firstName, lastName, affiliation, address, email, role, image } = req.body
+    let currentUserId = +userId
+    if (!currentUserId || isNaN(+currentUserId)){
+        next (new UserIdNumberNeededError)
+    } else { 
+        let updatedUser:User = {
+            userId: currentUserId,
+            username,
+            password,
+            //set up function so they know what their username and password was changed to?
+            firstName,
+            lastName,
+            affiliation,
+            placesVisited: (await findUsersById(currentUserId)).placesVisited,
             address,
             email,
             role,
@@ -80,7 +114,6 @@ userRouter.patch("/update/:userId", authorizationMiddleware(["Admin"], true), as
         updatedUser.firstName = firstName || undefined
         updatedUser.lastName = lastName || undefined
         updatedUser.affiliation = affiliation || undefined
-        updatedUser.placesVisited = placesVisited || undefined
         updatedUser.address = address || undefined
         updatedUser.email = email || undefined
         updatedUser.role = role || undefined
