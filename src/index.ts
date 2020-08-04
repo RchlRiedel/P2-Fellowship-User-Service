@@ -76,7 +76,7 @@ app.post("/register", async (req:any, res:Response, next:NextFunction)=>{
 })
 
 //login
-app.post("/login", async (req: Request, res: Response, next: NextFunction)=>{
+app.post("/login", async (req: any, res: Response, next: NextFunction)=>{
     let {username, password} =  req.body
 
     if (!username || !password){
@@ -87,6 +87,8 @@ app.post("/login", async (req: Request, res: Response, next: NextFunction)=>{
             let token = jwt.sign(user, 'thisIsASecret', {expiresIn: '1h'})
             res.header('Authorization', `Bearer ${token}`)
             // req.session.user = user
+            console.log(req.user);
+            
             res.json(user)
        } catch(e) {
            next(e)

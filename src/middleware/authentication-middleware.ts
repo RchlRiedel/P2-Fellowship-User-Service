@@ -1,4 +1,3 @@
-
 import { Response, NextFunction } from "express";
 
 export function authenticationMiddleware (req:any, res:Response, next:NextFunction){
