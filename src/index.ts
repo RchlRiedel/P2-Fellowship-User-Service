@@ -85,6 +85,8 @@ app.post("/login", async (req: any, res: Response, next: NextFunction)=>{
             res.header('Authorization', `Bearer ${token}`)
             // req.session.user = user
             console.log(req.user);
+            console.log(token);
+            
             
             res.json(user)
        } catch(e) {

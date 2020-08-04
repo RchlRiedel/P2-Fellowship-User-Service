@@ -4,7 +4,7 @@ export function corsFilter(req:Request, res:Response, next: NextFunction){
     //we always have to have the Access Control Allow part to allows stuff
     res.header('Access-Control-Allow-Origin', req.headers.origin) //* is bad because lets any origin send requests; 
     //this is a dirty hack. Don't do this when deploying an actual app
-    res.header('Access-Control-Allow-Headers', 'Orginin, Content-Type, Accept')
+    res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization')
     res.header('Access-Control-Expose-Headers', 'Authorization')//if we don't do this, the website cannot get access to the token
     res.header('Access-Control-Allow-Credentials', 'true')
     res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE')
