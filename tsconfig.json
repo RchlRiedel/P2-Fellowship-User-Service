@@ -16,7 +16,8 @@
       "strictNullChecks": false,
       "suppressImplicitAnyIndexErrors": true,
       "noUnusedLocals": true,
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "baseUrl": ".",
     },
     "exclude": [
       "node_modules",
@@ -26,8 +27,6 @@
       "docs",
       "acceptance-tests",
       "webpack",
-      "jest",
-      "src/**/*.test.ts"
     ]
   }
 
