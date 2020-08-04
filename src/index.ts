@@ -1,4 +1,3 @@
-
 import express, { Request, Response, NextFunction } from "express"
 import { userRouter } from "./routers/user-router"
 import { User } from "./models/User"
@@ -9,11 +8,13 @@ import { NoUserLoggedInError } from "./errors/No-User-Logged-In-Error"
 
 import { loggingMiddleware } from "./middleware/logging-middleware"
 import { corsFilter } from "./middleware/cors-filter"
+import jwt from 'jsonwebtoken'
 import { saveNewUserService, getUserByUserNameAndPasswordService } from "./services/user-service"
 
 //import { userTopic } from "./messaging"
 import './event-listeners/new-user' //so that file will actually excetute 
 import './event-listeners/updated-user' //try
+import { JWTVerifyMiddleware } from "./middleware/jwt-verify-middleware"
 
 //console.log(userTopic); //see what the topic is
 
@@ -25,6 +26,8 @@ app.use(express.json({limit:'50mb'}))
 app.use(loggingMiddleware)
 
 app.use(corsFilter)
+
+app.use(JWTVerifyMiddleware)
 
 app.use("/users", userRouter)
 
@@ -78,7 +81,9 @@ app.post("/login", async (req: any, res: Response, next: NextFunction)=>{
     } else {
        try {
             let user =await getUserByUserNameAndPasswordService(username, password)
-            req.user = user
+            let token = jwt.sign(user, 'thisIsASecret', {expiresIn: '1h'})
+            res.header('Authorization', `Bearer ${token}`)
+            // req.session.user = user
             res.json(user)
        } catch(e) {
            next(e)
