@@ -1,4 +1,3 @@
-
 import express, { Request, Response, NextFunction } from "express"
 import { userRouter } from "./routers/user-router"
 import { User } from "./models/User"
@@ -8,7 +7,7 @@ import { UserSignUpError } from "./errors/User-Sign-Up-Error"
 import { NoUserLoggedInError } from "./errors/No-User-Logged-In-Error"
 
 import { loggingMiddleware } from "./middleware/logging-middleware"
-import { sessionMiddleware } from "./middleware/session-middleware"
+// import { sessionMiddleware } from "./middleware/session-middleware"
 import { corsFilter } from "./middleware/cors-filter"
 import jwt from 'jsonwebtoken'
 import { saveNewUserService, getUserByUserNameAndPasswordService } from "./services/user-service"
@@ -16,7 +15,7 @@ import { saveNewUserService, getUserByUserNameAndPasswordService } from "./servi
 //import { userTopic } from "./messaging"
 import './event-listeners/new-user' //so that file will actually excetute 
 import './event-listeners/updated-user' //try
-// import { JWTVerifyMiddleware } from "./middleware/jwt-verify-middleware"
+import { JWTVerifyMiddleware } from "./middleware/jwt-verify-middleware"
 
 //console.log(userTopic); //see what the topic is
 
@@ -29,9 +28,9 @@ app.use(loggingMiddleware)
 
 app.use(corsFilter)
 
-app.use(sessionMiddleware)
+// app.use(sessionMiddleware)
 
-// app.use(JWTVerifyMiddleware)
+app.use(JWTVerifyMiddleware)
 
 app.use("/users", userRouter)
 
@@ -42,7 +41,7 @@ app.get('/health', (req:Request,res:Response)=>{
 
 
 //Save a new user (here to avoid authentification)
-app.post("/register", async (req:Request, res:Response, next:NextFunction)=>{    
+app.post("/register", async (req:any, res:Response, next:NextFunction)=>{    
     console.log(req.body)
     let {username, password, firstName, lastName, affiliation, address, email, image} = req.body 
 
@@ -68,7 +67,7 @@ app.post("/register", async (req:Request, res:Response, next:NextFunction)=>{
 
         try {
             let savedUser = await saveNewUserService(newUser) //using service function instead of DAO
-            req.session.user = savedUser //set session user to current, new user
+            req.user = savedUser //set session user to current, new user
             res.json(savedUser) 
         } catch(e) {
             next(e)
@@ -85,9 +84,9 @@ app.post("/login", async (req: Request, res: Response, next: NextFunction)=>{
     } else {
        try {
             let user =await getUserByUserNameAndPasswordService(username, password)
-            let token = jwt.sign(user, 'thisIsASecret',{expiresIn: '1h'})
+            let token = jwt.sign(user, 'thisIsASecret', {expiresIn: '1h'})
             res.header('Authorization', `Bearer ${token}`)
-            req.session.user = user
+            // req.session.user = user
             res.json(user)
        } catch(e) {
            next(e)
@@ -96,13 +95,13 @@ app.post("/login", async (req: Request, res: Response, next: NextFunction)=>{
 })
 
 //logout
-app.delete("/logout", async (req: Request, res: Response, next: NextFunction)=>{
-    if (!req.session.user) {
+app.delete("/logout", async (req: any, res: Response, next: NextFunction)=>{
+    if (!req.user) {
         next(new NoUserLoggedInError())
     } else {
         try {
-            req.session.user = null
-            res.json(req.session.user)
+            req.user = null
+            res.json(req.user)
         } catch(e) {
             next(e)
         }
