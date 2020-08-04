@@ -1,5 +1,6 @@
 import { Response, NextFunction} from "express";
 import jwt from 'jsonwebtoken'
+import { errorLogger, logger } from "../utilities/loggers";
 
 export const JWTVerifyMiddleware = (req: any, res: Response, Next: NextFunction) => {
     try {
@@ -13,6 +14,9 @@ export const JWTVerifyMiddleware = (req: any, res: Response, Next: NextFunction)
         //other validation middleware will catch it
     } catch(e) {
         console.log(e);
+        
+        logger.error(e)
+        errorLogger.error(e)
         Next(e)
     }
 } 

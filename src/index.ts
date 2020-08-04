@@ -7,7 +7,6 @@ import { UserSignUpError } from "./errors/User-Sign-Up-Error"
 import { NoUserLoggedInError } from "./errors/No-User-Logged-In-Error"
 
 import { loggingMiddleware } from "./middleware/logging-middleware"
-// import { sessionMiddleware } from "./middleware/session-middleware"
 import { corsFilter } from "./middleware/cors-filter"
 import jwt from 'jsonwebtoken'
 import { saveNewUserService, getUserByUserNameAndPasswordService } from "./services/user-service"
@@ -27,8 +26,6 @@ app.use(express.json({limit:'50mb'}))
 app.use(loggingMiddleware)
 
 app.use(corsFilter)
-
-// app.use(sessionMiddleware)
 
 app.use(JWTVerifyMiddleware)
 
@@ -67,7 +64,7 @@ app.post("/register", async (req:any, res:Response, next:NextFunction)=>{
 
         try {
             let savedUser = await saveNewUserService(newUser) //using service function instead of DAO
-            req.user = savedUser //set session user to current, new user
+            req.user = savedUser //set user to current, new user
             res.json(savedUser) 
         } catch(e) {
             next(e)
