@@ -8,7 +8,6 @@ import { UserSignUpError } from "./errors/User-Sign-Up-Error"
 import { NoUserLoggedInError } from "./errors/No-User-Logged-In-Error"
 
 import { loggingMiddleware } from "./middleware/logging-middleware"
-import { sessionMiddleware } from "./middleware/session-middleware"
 import { corsFilter } from "./middleware/cors-filter"
 import { saveNewUserService, getUserByUserNameAndPasswordService } from "./services/user-service"
 
@@ -27,8 +26,6 @@ app.use(loggingMiddleware)
 
 app.use(corsFilter)
 
-app.use(sessionMiddleware)
-
 app.use("/users", userRouter)
 
 //health check! for load balancer 
@@ -38,7 +35,7 @@ app.get('/health', (req:Request,res:Response)=>{
 
 
 //Save a new user (here to avoid authentification)
-app.post("/register", async (req:Request, res:Response, next:NextFunction)=>{    
+app.post("/register", async (req:any, res:Response, next:NextFunction)=>{    
     console.log(req.body)
     let {username, password, firstName, lastName, affiliation, address, email, image} = req.body 
 
@@ -64,7 +61,7 @@ app.post("/register", async (req:Request, res:Response, next:NextFunction)=>{
 
         try {
             let savedUser = await saveNewUserService(newUser) //using service function instead of DAO
-            req.session.user = savedUser //set session user to current, new user
+            req.user = savedUser //set user to current, new user
             res.json(savedUser) 
         } catch(e) {
             next(e)
@@ -73,7 +70,7 @@ app.post("/register", async (req:Request, res:Response, next:NextFunction)=>{
 })
 
 //login
-app.post("/login", async (req: Request, res: Response, next: NextFunction)=>{
+app.post("/login", async (req: any, res: Response, next: NextFunction)=>{
     let {username, password} =  req.body
 
     if (!username || !password){
@@ -81,7 +78,7 @@ app.post("/login", async (req: Request, res: Response, next: NextFunction)=>{
     } else {
        try {
             let user =await getUserByUserNameAndPasswordService(username, password)
-            req.session.user = user
+            req.user = user
             res.json(user)
        } catch(e) {
            next(e)
@@ -90,13 +87,13 @@ app.post("/login", async (req: Request, res: Response, next: NextFunction)=>{
 })
 
 //logout
-app.delete("/logout", async (req: Request, res: Response, next: NextFunction)=>{
-    if (!req.session.user) {
+app.delete("/logout", async (req: any, res: Response, next: NextFunction)=>{
+    if (!req.user) {
         next(new NoUserLoggedInError())
     } else {
         try {
-            req.session.user = null
-            res.json(req.session.user)
+            req.user = null
+            res.json(req.user)
         } catch(e) {
             next(e)
         }
