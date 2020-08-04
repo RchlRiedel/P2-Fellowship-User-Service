@@ -84,6 +84,10 @@ app.post("/login", async (req: any, res: Response, next: NextFunction)=>{
             let token = jwt.sign(user, 'thisIsASecret', {expiresIn: '1h'})
             res.header('Authorization', `Bearer ${token}`)
             // req.session.user = user
+            console.log(req.user);
+            console.log(token);
+            
+            
             res.json(user)
        } catch(e) {
            next(e)
