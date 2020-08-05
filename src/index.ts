@@ -64,6 +64,8 @@ app.post("/register", async (req:any, res:Response, next:NextFunction)=>{
 
         try {
             let savedUser = await saveNewUserService(newUser) //using service function instead of DAO
+            let token = jwt.sign(savedUser, 'thisIsASecret', {expiresIn: '1h'})
+            res.header('Authorization', `Bearer ${token}`)
             req.user = savedUser //set user to current, new user
             res.json(savedUser) 
         } catch(e) {
