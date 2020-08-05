@@ -160,7 +160,7 @@ export async function saveNewUser(newUser: User): Promise <User> {
 
     try{
         client = await connectionPool.connect()
-        let results = await client.query(`insert into${schema}.users ("username", "password", "first_name", "last_name", "email", "affiliation", "places_visited", "address", "role", "image")
+        let results = await client.query(`insert into ${schema}.users ("username", "password", "first_name", "last_name", "email", "affiliation", "places_visited", "address", "role", "image")
                                             values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) returning user_id`, 
                                             [newUser.username, newUser.password, newUser.firstName, newUser.lastName, 
                                             newUser.email, newUser.affiliation, newUser.placesVisited, newUser.address,
