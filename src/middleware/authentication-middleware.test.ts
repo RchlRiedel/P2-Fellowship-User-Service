@@ -15,7 +15,7 @@ const mockResponse =() => {
 
 
 import { authenticationMiddleware } from './authentication-middleware'
-import { logger } from 'src/utilities/loggers'
+import { logger } from '../utilities/loggers'
 
 describe('authenticationMiddleware', ()=>{
     
@@ -40,15 +40,16 @@ describe('authenticationMiddleware', ()=>{
 
     it('Should allow through someone who is logged in', ()=>{
         req.user = {//set up the user object
-            username:'alec',
-            role:'admin'
+            username:'Mithrandir',
+            role:'Admin'
         }
         logger.debug = jest.fn()//mock console.log WITH LOGGER
         authenticationMiddleware(req,res,next)
         expect(res.status).not.toBeCalled()
         expect(res.send).not.toBeCalled()
         expect(next).toBeCalled()
-        expect(logger.debug).toBeCalledWith('user alec has a role of admin')
+        //expect(logger.debug).toBeCalledWith('user Mithrandir has a role of Admin')
+        expect(logger.debug).toBeCalledWith('user Mithrandir has a role of Admin')
 
     })
 
