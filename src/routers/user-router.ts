@@ -5,7 +5,7 @@ import { authorizationMiddleware } from '../middleware/authorization-middleware'
 import { User } from '../models/User'
 import { UserIdNumberNeededError } from '../errors/User-Id-Number-Needed-Error'
 import { getAllUsersService, getUserByIDService, updateUserService } from '../services/user-service'
-import { allUserProfiles, findUsersById } from '../daos/SQL/users-dao'
+import { findUsersById } from '../daos/SQL/users-dao'
 
 export const userRouter = express.Router()
 
@@ -22,17 +22,8 @@ userRouter.get("/", authorizationMiddleware(["Admin"], false), async (req:Reques
     }
 })
 
-//Find Users for users                                              
-userRouter.get("/profiles",authorizationMiddleware(["User", "Admin"], true), async (req:Request, res:Response, next:NextFunction)=>{
-    try {
-        let allUsers2 = await allUserProfiles() 
-        res.json(allUsers2)
-    } catch(e){
-        next(e)
-}})
-    
 //Find user by id
-userRouter.get("/:userId",  authorizationMiddleware(["Admin"], true), async (req:Request, res:Response, next:NextFunction)=>{
+userRouter.get("/:userId", authorizationMiddleware(["Admin"], true), async (req:Request, res:Response, next:NextFunction)=>{
     let {userId} = req.params
     if(isNaN(+userId)){
         next(new UserIdNumberNeededError)
