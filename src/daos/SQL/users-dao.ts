@@ -27,27 +27,6 @@ export async function getAllUsers(): Promise<User[]>{
     }
 }
 
-//PLEASE EXPLAIN
-export async function allUserProfiles(): Promise<User[]>{
-    //first, decleare a client
-    let client:PoolClient
-    try {
-        //get connection
-        client = await connectionPool.connect()
-        //send query
-        let results = await client.query(`select u."username", u."first_name", u."last_name", u."affiliation" , u."places_visited", u."email", u."image" from ${schema}.users u;`)
-        //return results - but will they be user objects?
-        return results.rows.map(UserDTOtoUserConverter)
-    } catch(e) {
-        //if we get an error we don't know
-        console.log(e);
-        throw new Error ("This error can't be handled, like the way the ring can't be handled by anyone but Frodo")
-    } finally {
-        //let the connection go back to the pool
-        client && client.release()
-    }
-}
-
 //find users by id
 export async function findUsersById (userId: number): Promise<User> {
     let client: PoolClient 
