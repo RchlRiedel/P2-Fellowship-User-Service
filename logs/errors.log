@@ -11,3 +11,47 @@
     at corsFilter (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\src\middleware\cors-filter.ts:17:9) {
   expiredAt: 2020-08-04T16:49:09.000Z
 }
+[2020-08-06T16:39:29.158] [ERROR] error - JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:63:17)
+    at exports.JWTVerifyMiddleware (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\middleware\jwt-verify-middleware.ts:11:28)
+    at Layer.handle [as handle_request] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:275:10)
+    at corsFilter (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\middleware\cors-filter.ts:17:9)
+    at Layer.handle [as handle_request] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+[2020-08-06T16:42:17.877] [ERROR] error - JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:63:17)
+    at exports.JWTVerifyMiddleware (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\middleware\jwt-verify-middleware.ts:11:28)
+    at Layer.handle [as handle_request] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:275:10)
+    at corsFilter (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\middleware\cors-filter.ts:17:9)
+    at Layer.handle [as handle_request] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+[2020-08-06T16:42:17.916] [ERROR] error - JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:63:17)
+    at exports.JWTVerifyMiddleware (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\middleware\jwt-verify-middleware.ts:11:28)
+    at Layer.handle [as handle_request] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:275:10)
+    at corsFilter (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\middleware\cors-filter.ts:17:9)
+    at Layer.handle [as handle_request] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+[2020-08-06T16:42:21.902] [ERROR] error - JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:63:17)
+    at exports.JWTVerifyMiddleware (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\middleware\jwt-verify-middleware.ts:11:28)
+    at Layer.handle [as handle_request] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:275:10)
+    at corsFilter (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\middleware\cors-filter.ts:17:9)
+    at Layer.handle [as handle_request] (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
