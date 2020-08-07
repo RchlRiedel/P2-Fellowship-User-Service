@@ -59,43 +59,43 @@ export async function updateUser (updatedUser:User): Promise <User> {
         await client.query('BEGIN;') //start transaction
 
         if (updatedUser.username){
-            await client.query(`update${schema}.users set "username" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "username" = $1 where user_id = $2;`,
                                 [updatedUser.username, updatedUser.userId])
         }
         if (updatedUser.password){
-            await client.query(`update${schema}.users set "password" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "password" = $1 where user_id = $2;`,
                                 [updatedUser.password, updatedUser.userId])
         } 
         if (updatedUser.firstName){
-            await client.query(`update${schema}.users set "first_name" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "first_name" = $1 where user_id = $2;`,
                                 [updatedUser.firstName, updatedUser.userId])
         } 
         if (updatedUser.lastName){
-            await client.query(`update${schema}.users set "last_name" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "last_name" = $1 where user_id = $2;`,
                                 [updatedUser.lastName, updatedUser.userId])
         } 
         if (updatedUser.email){
-            await client.query(`update${schema}.users set "email" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "email" = $1 where user_id = $2;`,
                                 [updatedUser.email, updatedUser.userId])
         }
         if (updatedUser.affiliation){
-            await client.query(`update${schema}.users set "affiliation" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "affiliation" = $1 where user_id = $2;`,
                                 [updatedUser.affiliation, updatedUser.userId])
         }
         if (updatedUser.placesVisited){
-            await client.query(`update${schema}.users set "places_visited" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "places_visited" = $1 where user_id = $2;`,
                                 [updatedUser.placesVisited, updatedUser.userId])
         }
         if (updatedUser.address){
-            await client.query(`update${schema}.users set "address" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "address" = $1 where user_id = $2;`,
                                 [updatedUser.address, updatedUser.userId])
         }
         if (updatedUser.role){ //figure out what you're doing for this...
-            await client.query(`update${schema}.users set "role" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "role" = $1 where user_id = $2;`,
             [updatedUser.role, updatedUser.userId])
         }
         if (updatedUser.image){ //figure out what you're doing for this...
-            await client.query(`update${schema}.users set "image" = $1 where user_id = $2;`,
+            await client.query(`update ${schema}.users set "image" = $1 where user_id = $2;`,
             [updatedUser.image, updatedUser.userId])
         }
 
