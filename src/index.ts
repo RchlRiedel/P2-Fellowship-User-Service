@@ -16,6 +16,9 @@ import './event-listeners/new-user' //so that file will actually excetute
 import './event-listeners/updated-user' //try
 import { JWTVerifyMiddleware } from "./middleware/jwt-verify-middleware"
 
+const basePath = process.env['LB_BASE_PATH'] || ''
+
+
 //console.log(userTopic); //see what the topic is
 
 const app = express() //our application from express
@@ -29,6 +32,10 @@ app.use(corsFilter)
 
 app.use(JWTVerifyMiddleware)
 
+const basePathRouter = express.Router()
+app.use(basePath, basePathRouter) 
+
+
 app.use("/users", userRouter)
 
 //health check! for load balancer 
@@ -38,7 +45,7 @@ app.get('/health', (req:Request,res:Response)=>{
 
 
 //Save a new user (here to avoid authentification)
-app.post("/register", async (req:any, res:Response, next:NextFunction)=>{    
+basePathRouter.post("/register", async (req:any, res:Response, next:NextFunction)=>{    
     console.log(req.body)
     let {username, password, firstName, lastName, affiliation, address, email, image} = req.body 
 
@@ -75,7 +82,7 @@ app.post("/register", async (req:any, res:Response, next:NextFunction)=>{
 })
 
 //login
-app.post("/login", async (req: any, res: Response, next: NextFunction)=>{
+basePathRouter.post("/login", async (req: any, res: Response, next: NextFunction)=>{
     let {username, password} =  req.body
 
     if (!username || !password){
@@ -98,7 +105,7 @@ app.post("/login", async (req: any, res: Response, next: NextFunction)=>{
 })
 
 //logout
-app.delete("/logout", async (req: any, res: Response, next: NextFunction)=>{
+basePathRouter.delete("/logout", async (req: any, res: Response, next: NextFunction)=>{
     if (!req.user) {
         next(new NoUserLoggedInError())
     } else {
