@@ -34,4 +34,12 @@ insert into users ("username", "password", "first_name", "last_name", "affiliati
            ('FoolOfATook', '00psMyBad', 'Peregrin', 'Took', 'Fellowship', 'The Shire', 'tallerThanMerry@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/pippin.jfif'),
            ('WitchKing', 'ThisKing', 'Forgotten', null, 'Sauron', 'Angmar', 'noManCanBeatMe@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/witchking.jpg'),
            ('SnakeySnake', 'notASpy', 'Grima', 'Wormtongue', 'Saruman', 'Rohan', 'everyoneHatesMe@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/grima.jpg');
+
+update project_2_user_service.users u 
+	set "places_visited" = 
+		(select COUNT(ul."location_id") 
+		from project_2_location_service.users_locations ul
+		where ul."user_id" = u."user_id")
+	where "user_id">0;--for all users
+	
 select * from users;
