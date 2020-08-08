@@ -36,7 +36,7 @@ const basePathRouter = express.Router()
 app.use(basePath, basePathRouter) 
 
 
-app.use("/users", userRouter)
+basePathRouter.use("/users", userRouter)
 
 //health check! for load balancer 
 app.get('/health', (req:Request,res:Response)=>{
