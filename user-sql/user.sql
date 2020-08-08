@@ -1,10 +1,8 @@
-set database "LOTR-mirco";
+--set database 'LOTR-mirco';
 create schema project_2_user_service;
 set schema 'project_2_user_service';
 
---drop table users;
---drop table users_locations; this tale is moved to locations schema 
-
+drop table users cascade;
 
 create table users(
 	"user_id" serial primary key,
@@ -20,11 +18,20 @@ create table users(
 	"image" text
 );
 
-
-insert into users ("username", "password", "first_name", "last_name", "affiliation", "places_visited", "address", "email", "role", "image")
-	values ('Mithrandir', 'YouShallNotPass', 'Gandalf', null, 'Fellowship', 1233, null, 'shadofaxTheFast@email.com', 'Admin', null),
-		   ('RingBearer', 'myPrecious', 'Frodo', 'Baggins', 'Fellowship', 15, 'The Shire', 'frodoUnderhill@email.com', 'User', null),
-		   ('SamIAm', 'password', 'Samwise', 'Gamgee', 'Fellowship', 15, 'The Shire', 'potatoes4life@email.com', 'User', null),
-		   ('Strider', 'Actually87', 'Aragron II', 'Elessar Telcontar', 'Fellowship', 207, 'Gondor', 'Heir2Isildur@email.com', 'User', null),
-		   ('Dernhelm', 'IAmNoMan', 'Eowyn', null, 'Rohan', 27, 'Rohan', 'shieldMaiden@email.com', 'User', null),
-		   ('NotCountDooku', 'WiseWhiteWizard', 'Saruman', null, 'Sauron', 897, 'Isengard', 'sharkley@email.com', 'User', null);
+insert into users ("username", "password", "first_name", "last_name", "affiliation", "address", "email", "role", "image")
+	values ('Mithrandir', 'YouShallNotPass', 'Gandalf', null, 'Fellowship', null, 'shadofaxTheFast@email.com', 'Admin', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/gandalf.jpg'),
+		   ('RingBearer', 'myPrecious', 'Frodo', 'Baggins', 'Fellowship', 'The Shire', 'frodoUnderhill@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/frodo.jpg'),
+		   ('SamIAm', 'password', 'Samwise', 'Gamgee', 'Fellowship', 'The Shire', 'potatoes4life@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/samwise.jpg'),
+           ('Strider', 'Actually87', 'Aragron II', 'Elessar Telcontar', 'Fellowship', 'Gondor', 'Heir2Isildur@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/aragorn.jpg'),
+           ('GoldenGimli','ThatStillOnlyCountsAs1', 'Gimli', null, 'Fellowship', 'Erebor', 'lockBearer@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/gimli.jpg'),
+           ('CaptainOfTheWhiteTower', 'NearamirFaramir', 'Boromir', null, 'Fellowship', 'Gondor', 'sterwardPrince@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/boromir.jpg'),
+           ('LorealLegolas', 'BecauseYouAreWorthIt', 'Legolas', 'Greenleaf', 'Fellowship', 'Mirkwood', 'EndlessQuiver@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/legolas.jfif'),
+           ('Evenstar', 'Queen2Be', 'Arwen', null, 'Fellowship', 'Riverdell', 'comeANDclaimHIM@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/arwen.jpg'),
+           ('Galadrielf', 'LadyofLight', 'Galadriel', null, 'Fellowship', 'Lothlorien', 'greatAndTerrible@email.com', 'Admin', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/galadriel.jpg'),
+		   ('Dernhelm', 'IAmNoMan', 'Eowyn', null, 'Rohirrim', 'Rohan', 'shieldMaiden@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/eowyn.jpg'),
+		   ('NotCountDooku', 'WiseWhiteWizard', 'Saruman', null, 'Sauron', 'Isengard', 'sharkley@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/saruman.jpg'),
+           ('MerryMerry', 'BrandybuckBoi', 'Meriadoc', 'Brandybuck', 'Fellowship', 'The Shire','tallerThanPippin@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/merry.jfif'),
+           ('FoolOfATook', '00psMyBad', 'Peregrin', 'Took', 'Fellowship', 'The Shire', 'tallerThanMerry@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/pippin.jfif'),
+           ('WitchKing', 'ThisKing', 'Forgotten', null, 'Sauron', 'Angmar', 'noManCanBeatMe@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/witchking.jpg'),
+           ('SnakeySnake', 'notASpy', 'Grima', 'Wormtongue', 'Saruman', 'Rohan', 'everyoneHatesMe@email.com', 'User', 'https://storage.googleapis.com/p2-fellowship/LOTR_Profiles/grima.jpg');
+select * from users;
