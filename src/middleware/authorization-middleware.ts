@@ -1,4 +1,5 @@
 import { Response, NextFunction } from "express";
+import { logger } from "../utilities/loggers";
 
 
 //same from lightly-burning
@@ -10,7 +11,7 @@ export function authorizationMiddleware(roles:string[], currentUser: Boolean){ /
         for (const role of roles){//to allow a given role
             if (req.user.role === role){
                 allowed =true
-                console.log(`role: ${role}, input role:${req.user.role}`);
+                logger.debug(`role: ${role}, input role:${req.user.role}`);
             }
         }
         if (currentUser){  //if we are checking for current user

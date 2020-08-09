@@ -1,13 +1,14 @@
 import { User } from "../models/User";
 import { updatedUserTopic } from "../messaging";
 import { customExpressEvents, expressEventEmitter } from ".";
+import { logger, errorLogger } from "../utilities/loggers";
 
 //custom event listener that will fire when someone emits a New User Event
 //by default, event listeners fire in order and synchronously
 
 //this sends use objects that let us know what has been updated so far, but always sends userId, role, and username
 expressEventEmitter.on(customExpressEvents.UPDATED_USER, (updatedUser: User) =>{
-    console.log("and I Raaaan");
+    logger.debug("and I Raaaan");
     
     setImmediate(async ()=>{
         try {  
@@ -47,9 +48,10 @@ expressEventEmitter.on(customExpressEvents.UPDATED_USER, (updatedUser: User) =>{
             let res = await updatedUserTopic.publishJSON(updatedUserInfo) 
             //publishJSON is specifically buffering JSON for you
             //subscriptions always return message data in the form of a buffer,soooooooo..... look at documentation
-            console.log(res)
+            logger.debug(res)
         } catch(e){
-            console.log(e);  
+            errorLogger.error(e);
+            logger.error(e)  
         }
     })
 })

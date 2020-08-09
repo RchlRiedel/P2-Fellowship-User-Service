@@ -5,7 +5,7 @@ export  function authenticationMiddleware (req:any, res:Response, next:NextFunct
     if (!req.user){
         res.status(401).send('Please Login') //could be a custom error
     } else {
-        console.log(`User ${req.user.username} has a role of ${req.user.role}`);
+        logger.debug(`User ${req.user.username} has a role of ${req.user.role}`);
         logger.debug(`user ${req.user.username} has a role of ${req.user.role}`);
         next()
     }
