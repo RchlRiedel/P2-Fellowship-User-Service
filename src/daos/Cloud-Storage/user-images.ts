@@ -1,4 +1,5 @@
 import { imageBucket } from ".";
+import { errorLogger, logger } from "../../utilities/loggers";
 
 
 export async function saveProfilePicture(contentType:string, imageBase64Data:string, fileName:string){
@@ -14,9 +15,10 @@ export async function saveProfilePicture(contentType:string, imageBase64Data:str
                 contentType//set some metadata about the new file
             }
         })
-        console.log('Image saved')
+        logger.debug('Image saved to storage bucket')
     } catch(e){
-        console.log(e);
+        errorLogger.error(e);
+        logger.error(e)
         throw e  
     }
    

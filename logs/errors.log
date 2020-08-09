@@ -1,0 +1,13 @@
+[2020-08-09T09:39:45.246] [ERROR] error - TokenExpiredError: jwt expired
+    at C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:152:21
+    at getSecret (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:94:10)
+    at exports.JWTVerifyMiddleware (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\src\middleware\jwt-verify-middleware.ts:11:28)
+    at Layer.handle [as handle_request] (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:275:10)
+    at corsFilter (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\src\middleware\cors-filter.ts:17:9) {
+  expiredAt: 2020-08-04T22:15:51.000Z
+}
