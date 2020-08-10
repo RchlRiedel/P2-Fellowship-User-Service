@@ -75,8 +75,14 @@ basePathRouter.post("/register", async (req: any, res: Response, next: NextFunct
             let token = jwt.sign(savedUser, 'thisIsASecret', { expiresIn: '1h' })
             res.header('Authorization', `Bearer ${token}`)
             req.user = savedUser //set user to current, new user
+<<<<<<< Updated upstream
             res.json(savedUser)
         } catch (e) {
+=======
+            res.json(savedUser) 
+            console.log(`in the index ${savedUser}`)
+        } catch(e) {
+>>>>>>> Stashed changes
             next(e)
         }
     }

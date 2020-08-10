@@ -175,13 +175,8 @@ export async function saveNewUser(newUser: User): Promise <User> {
                                             newUser.role, newUser.image])
         
         newUser.userId = results.rows[0].user_id    
-<<<<<<< Updated upstream
         logger.info(newUser);
         return newUser   
-=======
-        console.log(`in the dao ${newUser.userId}`);
-        return newUser
->>>>>>> Stashed changes
     } catch(e) {       
         logger.error(e);
         errorLogger.error(e)
