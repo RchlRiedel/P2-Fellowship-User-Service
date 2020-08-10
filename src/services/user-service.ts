@@ -36,7 +36,10 @@ export async function saveNewUserService(newUser: User): Promise<User> {
             await saveProfilePicture(contentType, imageBase64Data, `LOTR_Profiles/${newUser.username}.${contentType}`)
         //spaces are ok in usernames (for file path) :D
         }
+        
         let savedUser = await saveNewUser(newUser)
+        console.log(`in the service ${savedUser}`);
+        
         expressEventEmitter.emit(customExpressEvents.NEW_USER, newUser)
         //with event driven design after I completed the save a user process
         //send an event saying tis done with the relevent info
