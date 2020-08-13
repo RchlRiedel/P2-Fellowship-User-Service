@@ -1,5 +1,5 @@
 import { imageBucket } from ".";
-import { logger } from "src/utilities/loggers";
+import { logger } from "../../utilities/loggers";
 
 
 export async function saveProfilePicture(contentType:string, imageBase64Data:string, fileName:string){

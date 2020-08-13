@@ -5,6 +5,6 @@ import { HttpError } from "./Http-Error";
 
 export class UserSignUpError extends HttpError {
     constructor (){
-        super (400, `Please provide a username, password, email, and affiliation`)
+        super (400, `Please provide a username, password, first name, email, and affiliation`)
     }
 }

@@ -47,7 +47,7 @@ app.get('/health', (req: Request, res: Response) => {
 
 //Save a new user (here to avoid authentification)
 basePathRouter.post("/register", async (req: any, res: Response, next: NextFunction) => {
-    logger.info(req.body)
+    //logger.info(req.body)
     let { username, password, firstName, lastName, affiliation, address, email, image } = req.body
 
     if (!username || !password || !firstName || !affiliation || !email) {
@@ -76,7 +76,6 @@ basePathRouter.post("/register", async (req: any, res: Response, next: NextFunct
             res.header('Authorization', `Bearer ${token}`)
             req.user = savedUser //set user to current, new user
             res.json(savedUser) 
-            console.log(`in the index ${savedUser}`)
         } catch(e) {
             next(e)
         }
@@ -97,8 +96,6 @@ basePathRouter.post("/login", async (req: any, res: Response, next: NextFunction
             // req.session.user = user
             logger.debug(req.user);
             console.log(token);
-
-
             res.json(user)
         } catch (e) {
             next(e)

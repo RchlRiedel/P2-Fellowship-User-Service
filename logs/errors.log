@@ -361,3 +361,142 @@
     at Generator.throw (<anonymous>)
     at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[2020-08-13T12:06:45.991] [ERROR] error - TypeError: Cannot read property 'split' of null
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\services\user-service.ts:28:59)
+    at Generator.next (<anonymous>)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\services\user-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\services\user-service.ts:4:12)
+    at Object.saveNewUserService (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\services\user-service.ts:40:12)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\index.ts:74:35
+    at Generator.next (<anonymous>)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\index.ts:8:71
+    at new Promise (<anonymous>)
+[2020-08-13T12:06:46.015] [ERROR] error - TypeError: Cannot read property 'split' of null
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\services\user-service.ts:28:59)
+    at Generator.next (<anonymous>)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\services\user-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\services\user-service.ts:4:12)
+    at Object.saveNewUserService (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\services\user-service.ts:40:12)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\index.ts:74:35
+    at Generator.next (<anonymous>)
+    at C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\index.ts:8:71
+    at new Promise (<anonymous>)
+[2020-08-13T12:08:17.460] [ERROR] error - error: duplicate key value violates unique constraint "users_username_key"
+    at Parser.parseErrorMessage (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:325:11)
+    at Parser.handlePacket (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:154:21)
+    at Parser.parse (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:106:30)
+    at Socket.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (events.js:315:20)
+    at Socket.EventEmitter.emit (domain.js:482:12)
+    at addChunk (_stream_readable.js:295:12)
+    at readableAddChunk (_stream_readable.js:271:9)
+    at Socket.Readable.push (_stream_readable.js:212:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+  length: 221,
+  severity: 'ERROR',
+  code: '23505',
+  detail: 'Key (username)=(Test) already exists.',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'project_2_user_service',
+  table: 'users',
+  column: undefined,
+  dataType: undefined,
+  constraint: 'users_username_key',
+  file: 'nbtinsert.c',
+  line: '570',
+  routine: '_bt_check_unique'
+}
+[2020-08-13T12:08:17.461] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:183:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[2020-08-13T12:08:17.478] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:183:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[2020-08-13T12:25:36.325] [ERROR] error - error: duplicate key value violates unique constraint "users_username_key"
+    at Parser.parseErrorMessage (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:325:11)
+    at Parser.handlePacket (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:154:21)
+    at Parser.parse (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:106:30)
+    at Socket.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (events.js:315:20)
+    at Socket.EventEmitter.emit (domain.js:482:12)
+    at addChunk (_stream_readable.js:295:12)
+    at readableAddChunk (_stream_readable.js:271:9)
+    at Socket.Readable.push (_stream_readable.js:212:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+  length: 222,
+  severity: 'ERROR',
+  code: '23505',
+  detail: 'Key (username)=(Test2) already exists.',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'project_2_user_service',
+  table: 'users',
+  column: undefined,
+  dataType: undefined,
+  constraint: 'users_username_key',
+  file: 'nbtinsert.c',
+  line: '570',
+  routine: '_bt_check_unique'
+}
+[2020-08-13T12:25:36.326] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:183:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[2020-08-13T12:25:36.340] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:183:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[2020-08-13T12:28:06.375] [ERROR] error - error: duplicate key value violates unique constraint "users_username_key"
+    at Parser.parseErrorMessage (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:325:11)
+    at Parser.handlePacket (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:154:21)
+    at Parser.parse (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\parser.ts:106:30)
+    at Socket.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (events.js:315:20)
+    at Socket.EventEmitter.emit (domain.js:482:12)
+    at addChunk (_stream_readable.js:295:12)
+    at readableAddChunk (_stream_readable.js:271:9)
+    at Socket.Readable.push (_stream_readable.js:212:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+  length: 222,
+  severity: 'ERROR',
+  code: '23505',
+  detail: 'Key (username)=(Test3) already exists.',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'project_2_user_service',
+  table: 'users',
+  column: undefined,
+  dataType: undefined,
+  constraint: 'users_username_key',
+  file: 'nbtinsert.c',
+  line: '570',
+  routine: '_bt_check_unique'
+}
+[2020-08-13T12:28:06.376] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:183:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[2020-08-13T12:28:06.388] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:183:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
