@@ -14,7 +14,11 @@ export async function saveProfilePicture(contentType:string, imageBase64Data:str
                 contentType//set some metadata about the new file
             }
         })
+<<<<<<< Updated upstream
         console.log('Image saved')
+=======
+        logger.debug('Image saved to storage bucket') //confirm
+>>>>>>> Stashed changes
     } catch(e){
         console.log(e);
         throw e  

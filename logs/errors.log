@@ -1,0 +1,366 @@
+<<<<<<< Updated upstream
+=======
+[2020-08-09T09:39:45.246] [ERROR] error - TokenExpiredError: jwt expired
+    at C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:152:21
+    at getSecret (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\jsonwebtoken\verify.js:94:10)
+    at exports.JWTVerifyMiddleware (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\src\middleware\jwt-verify-middleware.ts:11:28)
+    at Layer.handle [as handle_request] (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\node_modules\express\lib\router\index.js:275:10)
+    at corsFilter (C:\Users\arlet\Documents\Revature\finalproject2\P2-Fellowship-User-Service\src\middleware\cors-filter.ts:17:9) {
+  expiredAt: 2020-08-04T22:15:51.000Z
+}
+[2020-08-09T20:59:11.180] [ERROR] error - Error: connect ETIMEDOUT 35.245.17.23:5432
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1141:16) {
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  address: '35.245.17.23',
+  port: 5432
+}
+[2020-08-09T20:59:11.261] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:159:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[2020-08-10T00:23:09.637] [ERROR] error - {
+  code: 400,
+  message: 'Invalid Upload Request',
+  errors: [
+    {
+      message: 'Invalid Upload Request',
+      domain: 'global',
+      reason: 'badRequest'
+    }
+  ]
+}
+[2020-08-10T00:23:09.661] [ERROR] error - {
+  code: 400,
+  message: 'Invalid Upload Request',
+  errors: [
+    {
+      message: 'Invalid Upload Request',
+      domain: 'global',
+      reason: 'badRequest'
+    }
+  ]
+}
+[2020-08-10T00:23:11.906] [ERROR] error - {
+  code: 400,
+  message: 'Invalid Upload Request',
+  errors: [
+    {
+      message: 'Invalid Upload Request',
+      domain: 'global',
+      reason: 'badRequest'
+    }
+  ]
+}
+[2020-08-10T00:23:11.916] [ERROR] error - {
+  code: 400,
+  message: 'Invalid Upload Request',
+  errors: [
+    {
+      message: 'Invalid Upload Request',
+      domain: 'global',
+      reason: 'badRequest'
+    }
+  ]
+}
+[2020-08-10T00:23:47.133] [ERROR] error - GaxiosError: Invalid Upload Request
+    at Gaxios._request (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gaxios\src\gaxios.ts:108:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at JWT.requestAsync (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\google-auth-library\build\src\auth\oauth2client.js:343:18)
+    at Upload.makeRequest (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:571:17)
+    at Upload.getAndSetOffset (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:509:20)
+    at Upload.continueUploading (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:373:5) {
+  response: {
+    config: {
+      method: 'PUT',
+      url: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA',
+      headers: [Object],
+      validateStatus: [Function],
+      params: [Object: null prototype],
+      paramsSerializer: [Function: paramsSerializer],
+      responseType: 'json'
+    },
+    data: { error: [Object] },
+    headers: {
+      'alt-svc': 'h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"',
+      'cache-control': 'no-cache, no-store, max-age=0, must-revalidate',
+      connection: 'close',
+      'content-length': '221',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Mon, 10 Aug 2020 04:23:09 GMT',
+      expires: 'Mon, 01 Jan 1990 00:00:00 GMT',
+      pragma: 'no-cache',
+      server: 'UploadServer',
+      vary: 'Origin, X-Origin',
+      'x-guploader-uploadid': 'AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    },
+    status: 400,
+    statusText: 'Bad Request',
+    request: {
+      responseURL: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    }
+  },
+  config: {
+    method: 'PUT',
+    url: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA',
+    headers: {
+      'Content-Length': 0,
+      'Content-Range': 'bytes */*',
+      Authorization: 'Bearer ya29.c.KpMB1wdKnRNVVtKCfkAbGplNnkxllSkfh-7RZSsRWN-OTWRGFZ8XbZqVXdbnMla_WRnG70ig9DEmxR10A2tgDWH0p6C2sOmQn2-8tccfcEWg-SfL9DoZGzNCntW0Ab5uDVvxYhZ1XSoyLPdNMyyEkbA4C1X_002PctiQqUUUOp_3CRXNUpj5KA23jPKFihnIHbfLpY-2',
+      'User-Agent': 'google-api-nodejs-client/6.0.5',
+      'x-goog-api-client': 'gl-node/12.18.0 auth/6.0.5',
+      Accept: 'application/json'
+    },
+    validateStatus: [Function],
+    params: [Object: null prototype] {
+      name: 'LOTR_Profiles/undefined.png',
+      uploadType: 'resumable',
+      upload_id: 'AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    },
+    paramsSerializer: [Function: paramsSerializer],
+    responseType: 'json'
+  },
+  code: 400,
+  errors: [
+    {
+      message: 'Invalid Upload Request',
+      domain: 'global',
+      reason: 'badRequest'
+    }
+  ]
+}
+[2020-08-10T00:23:47.180] [ERROR] error - GaxiosError: Invalid Upload Request
+    at Gaxios._request (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gaxios\src\gaxios.ts:108:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at JWT.requestAsync (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\google-auth-library\build\src\auth\oauth2client.js:343:18)
+    at Upload.makeRequest (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:571:17)
+    at Upload.getAndSetOffset (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:509:20)
+    at Upload.continueUploading (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:373:5) {
+  response: {
+    config: {
+      method: 'PUT',
+      url: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA',
+      headers: [Object],
+      validateStatus: [Function],
+      params: [Object: null prototype],
+      paramsSerializer: [Function: paramsSerializer],
+      responseType: 'json'
+    },
+    data: { error: [Object] },
+    headers: {
+      'alt-svc': 'h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"',
+      'cache-control': 'no-cache, no-store, max-age=0, must-revalidate',
+      connection: 'close',
+      'content-length': '221',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Mon, 10 Aug 2020 04:23:09 GMT',
+      expires: 'Mon, 01 Jan 1990 00:00:00 GMT',
+      pragma: 'no-cache',
+      server: 'UploadServer',
+      vary: 'Origin, X-Origin',
+      'x-guploader-uploadid': 'AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    },
+    status: 400,
+    statusText: 'Bad Request',
+    request: {
+      responseURL: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    }
+  },
+  config: {
+    method: 'PUT',
+    url: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA',
+    headers: {
+      'Content-Length': 0,
+      'Content-Range': 'bytes */*',
+      Authorization: 'Bearer ya29.c.KpMB1wdKnRNVVtKCfkAbGplNnkxllSkfh-7RZSsRWN-OTWRGFZ8XbZqVXdbnMla_WRnG70ig9DEmxR10A2tgDWH0p6C2sOmQn2-8tccfcEWg-SfL9DoZGzNCntW0Ab5uDVvxYhZ1XSoyLPdNMyyEkbA4C1X_002PctiQqUUUOp_3CRXNUpj5KA23jPKFihnIHbfLpY-2',
+      'User-Agent': 'google-api-nodejs-client/6.0.5',
+      'x-goog-api-client': 'gl-node/12.18.0 auth/6.0.5',
+      Accept: 'application/json'
+    },
+    validateStatus: [Function],
+    params: [Object: null prototype] {
+      name: 'LOTR_Profiles/undefined.png',
+      uploadType: 'resumable',
+      upload_id: 'AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    },
+    paramsSerializer: [Function: paramsSerializer],
+    responseType: 'json'
+  },
+  code: 400,
+  errors: [
+    {
+      message: 'Invalid Upload Request',
+      domain: 'global',
+      reason: 'badRequest'
+    }
+  ]
+}
+[2020-08-10T00:34:19.269] [ERROR] error - GaxiosError: Invalid Upload Request
+    at Gaxios._request (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gaxios\src\gaxios.ts:108:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at JWT.requestAsync (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\google-auth-library\build\src\auth\oauth2client.js:343:18)
+    at Upload.makeRequest (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:571:17)
+    at Upload.getAndSetOffset (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:509:20)
+    at Upload.continueUploading (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:373:5) {
+  response: {
+    config: {
+      method: 'PUT',
+      url: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA',
+      headers: [Object],
+      validateStatus: [Function],
+      params: [Object: null prototype],
+      paramsSerializer: [Function: paramsSerializer],
+      responseType: 'json'
+    },
+    data: { error: [Object] },
+    headers: {
+      'alt-svc': 'h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"',
+      'cache-control': 'no-cache, no-store, max-age=0, must-revalidate',
+      connection: 'close',
+      'content-length': '221',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Mon, 10 Aug 2020 04:23:09 GMT',
+      expires: 'Mon, 01 Jan 1990 00:00:00 GMT',
+      pragma: 'no-cache',
+      server: 'UploadServer',
+      vary: 'Origin, X-Origin',
+      'x-guploader-uploadid': 'AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    },
+    status: 400,
+    statusText: 'Bad Request',
+    request: {
+      responseURL: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    }
+  },
+  config: {
+    method: 'PUT',
+    url: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA',
+    headers: {
+      'Content-Length': 0,
+      'Content-Range': 'bytes */*',
+      Authorization: 'Bearer ya29.c.KpMB1wdKnRNVVtKCfkAbGplNnkxllSkfh-7RZSsRWN-OTWRGFZ8XbZqVXdbnMla_WRnG70ig9DEmxR10A2tgDWH0p6C2sOmQn2-8tccfcEWg-SfL9DoZGzNCntW0Ab5uDVvxYhZ1XSoyLPdNMyyEkbA4C1X_002PctiQqUUUOp_3CRXNUpj5KA23jPKFihnIHbfLpY-2',
+      'User-Agent': 'google-api-nodejs-client/6.0.5',
+      'x-goog-api-client': 'gl-node/12.18.0 auth/6.0.5',
+      Accept: 'application/json'
+    },
+    validateStatus: [Function],
+    params: [Object: null prototype] {
+      name: 'LOTR_Profiles/undefined.png',
+      uploadType: 'resumable',
+      upload_id: 'AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    },
+    paramsSerializer: [Function: paramsSerializer],
+    responseType: 'json'
+  },
+  code: 400,
+  errors: [
+    {
+      message: 'Invalid Upload Request',
+      domain: 'global',
+      reason: 'badRequest'
+    }
+  ]
+}
+[2020-08-10T00:34:19.308] [ERROR] error - GaxiosError: Invalid Upload Request
+    at Gaxios._request (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gaxios\src\gaxios.ts:108:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at JWT.requestAsync (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\google-auth-library\build\src\auth\oauth2client.js:343:18)
+    at Upload.makeRequest (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:571:17)
+    at Upload.getAndSetOffset (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:509:20)
+    at Upload.continueUploading (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\node_modules\gcs-resumable-upload\src\index.ts:373:5) {
+  response: {
+    config: {
+      method: 'PUT',
+      url: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA',
+      headers: [Object],
+      validateStatus: [Function],
+      params: [Object: null prototype],
+      paramsSerializer: [Function: paramsSerializer],
+      responseType: 'json'
+    },
+    data: { error: [Object] },
+    headers: {
+      'alt-svc': 'h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"',
+      'cache-control': 'no-cache, no-store, max-age=0, must-revalidate',
+      connection: 'close',
+      'content-length': '221',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Mon, 10 Aug 2020 04:23:09 GMT',
+      expires: 'Mon, 01 Jan 1990 00:00:00 GMT',
+      pragma: 'no-cache',
+      server: 'UploadServer',
+      vary: 'Origin, X-Origin',
+      'x-guploader-uploadid': 'AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    },
+    status: 400,
+    statusText: 'Bad Request',
+    request: {
+      responseURL: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    }
+  },
+  config: {
+    method: 'PUT',
+    url: 'https://storage.googleapis.com/upload/storage/v1/b/p2-fellowship/o?name=LOTR_Profiles%2Fundefined.png&uploadType=resumable&upload_id=AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA',
+    headers: {
+      'Content-Length': 0,
+      'Content-Range': 'bytes */*',
+      Authorization: 'Bearer ya29.c.KpMB1wdKnRNVVtKCfkAbGplNnkxllSkfh-7RZSsRWN-OTWRGFZ8XbZqVXdbnMla_WRnG70ig9DEmxR10A2tgDWH0p6C2sOmQn2-8tccfcEWg-SfL9DoZGzNCntW0Ab5uDVvxYhZ1XSoyLPdNMyyEkbA4C1X_002PctiQqUUUOp_3CRXNUpj5KA23jPKFihnIHbfLpY-2',
+      'User-Agent': 'google-api-nodejs-client/6.0.5',
+      'x-goog-api-client': 'gl-node/12.18.0 auth/6.0.5',
+      Accept: 'application/json'
+    },
+    validateStatus: [Function],
+    params: [Object: null prototype] {
+      name: 'LOTR_Profiles/undefined.png',
+      uploadType: 'resumable',
+      upload_id: 'AAANsUly4vHPf5EcQEfVP9twbQsYDqZDbB7Anm50X3RV_6Ze3ZMuFB2qdUo5Vf2IQLmg27J5X8fKsfVsyjg9UuTW3jA'
+    },
+    paramsSerializer: [Function: paramsSerializer],
+    responseType: 'json'
+  },
+  code: 400,
+  errors: [
+    {
+      message: 'Invalid Upload Request',
+      domain: 'global',
+      reason: 'badRequest'
+    }
+  ]
+}
+[2020-08-10T01:40:00.667] [ERROR] error - Error: connect ETIMEDOUT 35.245.17.23:5432
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1141:16) {
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  address: '35.245.17.23',
+  port: 5432
+}
+[2020-08-10T01:40:00.682] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:74:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[2020-08-10T01:41:11.439] [ERROR] error - Error: connect ETIMEDOUT 35.245.17.23:5432
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1141:16) {
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  address: '35.245.17.23',
+  port: 5432
+}
+[2020-08-10T01:41:11.453] [ERROR] error - Error: This error can't be handled, like the way the ring can't be handled by anyone but Frodo
+    at Object.<anonymous> (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:159:15)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\rares\Project2-Fellowship-FULL\P2-Fellowship-User-Service\src\daos\SQL\users-dao.ts:6:65)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+>>>>>>> Stashed changes
