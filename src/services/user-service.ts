@@ -3,6 +3,7 @@ import { saveProfilePicture } from "../daos/Cloud-Storage/user-images";
 import { bucketBaseUrl } from "../daos/Cloud-Storage";
 import { expressEventEmitter, customExpressEvents } from "../event-listeners";
 import { getAllUsers, findUsersById, saveNewUser, getUserByUsernameAndPassword, updateUser } from "../daos/SQL/users-dao";
+import { logger, errorLogger } from "../utilities/loggers";
 
 //the most basic service function you will see (all it does is call the dao)
 //its easier to expand a function that already exists instead of inserting a new function in to the mix
@@ -47,7 +48,8 @@ export async function saveNewUserService(newUser: User): Promise<User> {
         // (aka) send an event with relevant info, telling us we are done saving new user (only to internal server pieces)
         return savedUser
     } catch (e) {
-        console.log(e)
+        errorLogger.error(e);
+        logger.error(e)
         throw e
     }
     //if we can't save the user in the db, don't save the picture
@@ -79,7 +81,8 @@ export async function updateUserService(updatedUser: User): Promise<User>{
         expressEventEmitter.emit(customExpressEvents.UPDATED_USER, updatedUser)
         return savedUser
     } catch (e) {
-        console.log(e)
+        errorLogger.error(e);
+        logger.error(e)
         throw e
     }   
 }

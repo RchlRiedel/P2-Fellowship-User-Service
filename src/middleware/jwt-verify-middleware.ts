@@ -12,9 +12,7 @@ export const JWTVerifyMiddleware = (req: any, res: Response, Next: NextFunction)
         }
         Next()//no token and no req.user
         //other validation middleware will catch it
-    } catch(e) {
-        console.log(e);
-        
+    } catch(e) {   
         logger.error(e)
         errorLogger.error(e)
         Next(e)

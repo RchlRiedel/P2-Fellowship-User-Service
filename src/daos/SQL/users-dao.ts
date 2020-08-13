@@ -4,6 +4,7 @@ import { UserDTOtoUserConverter } from "../../utilities/UserDTO-to-Users-convert
 import { User } from "../../models/User";
 import { UserNotFoundError } from "../../errors/User-Not-Found-Error";
 import { AuthFailureError } from "../../errors/Authentification-Failure";
+import { logger, errorLogger } from "../../utilities/loggers";
 
 const schema = process.env['P2_SCHEMA'] || 'project_2_user_service'
 
@@ -13,13 +14,25 @@ export async function getAllUsers(): Promise<User[]>{
     try {
         //get connection
         client = await connectionPool.connect()
-        //send query
+        await client.query('BEGIN;') //start transaction
+        //update places visited
+        await client.query(`update ${schema}.users u 
+                                set "places_visited" = 
+                                    (select COUNT(ul."location_id") 
+                                    from project_2_location_service.users_locations ul
+                                    where ul."user_id" = u."user_id")
+                                where "user_id">0;`)
+        //send query for all users
         let results = await client.query(`select * from ${schema}.users u;`)
+        console.log(results);
+        await client.query('COMMIT;') //end transaction
         //return results
         return results.rows.map(UserDTOtoUserConverter)
     } catch(e) {
+        client && client.query('ROLLBACK;') //if a js error takes place, send it back
         //if we get an error we don't know
-        console.log(e);
+        logger.error(e);
+        errorLogger.error(e)
         throw new Error ("This error can't be handled, like the way the ring can't be handled by anyone but Frodo")
     } finally {
         //let the connection go back to the pool
@@ -32,18 +45,32 @@ export async function findUsersById (userId: number): Promise<User> {
     let client: PoolClient 
     try{ 
         client = await connectionPool.connect()
+        await client.query('BEGIN;') //start transaction
+
+        await client.query(`update ${schema}.users u 
+                                set "places_visited" = 
+                                    (select COUNT(ul."location_id") 
+                                    from project_2_location_service.users_locations ul
+                                    where ul."user_id" = u."user_id")
+                                where "user_id"=$1;`, [userId])
+
         let results: QueryResult = await client.query(`select * from ${schema}.users u 
                                                     where u.user_id = $1;`, [userId])
+        console.log(results);
+        await client.query('COMMIT;') //end transaction
+
         if (results.rowCount === 0){
             throw new Error('NotFound')
         } else {
             return UserDTOtoUserConverter(results.rows[0])
         }
     } catch(e) {
+        client && client.query('ROLLBACK;') //if a js error takes place, send it back
         if (e.message === "NotFound"){
             throw new UserNotFoundError
         }
-        console.log(e);
+        logger.error(e);
+        errorLogger.error(e)
         throw new Error ("This error can't be handled, like the way the ring can't be handled by anyone but Frodo")
     } finally { 
         client && client.release()
@@ -104,7 +131,8 @@ export async function updateUser (updatedUser:User): Promise <User> {
 
     } catch(e) {
         client && client.query('ROLLBACK;') //if a js error takes place, send it back
-        console.log(e);
+        logger.error(e);
+        errorLogger.error(e)
         throw new Error ("This error can't be handled, like the way the ring can't be handled by anyone but Frodo")
     } finally {
         client && client.release()
@@ -126,7 +154,8 @@ export async function getUserByUsernameAndPassword (username:String, password:St
         if (e.message === "NotFound"){
             throw new AuthFailureError
         }
-        console.log(e);
+        logger.error(e);
+        errorLogger.error(e)
         throw new Error ("This error can't be handled, like the way the ring can't be handled by anyone but Frodo")
     } finally { 
         client && client.release()
@@ -146,10 +175,11 @@ export async function saveNewUser(newUser: User): Promise <User> {
                                             newUser.role, newUser.image])
         
         newUser.userId = results.rows[0].user_id    
-        console.log(newUser);
+        logger.info(newUser);
         return newUser   
     } catch(e) {       
-        console.log(e);
+        logger.error(e);
+        errorLogger.error(e)
         throw new Error ("This error can't be handled, like the way the ring can't be handled by anyone but Frodo")
     } finally {
         client && client.release()
