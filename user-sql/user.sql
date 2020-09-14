@@ -1,4 +1,4 @@
---set database 'LOTR-mirco';
+--set database 'LOTR_Mirco';
 create schema project_2_user_service;
 set schema 'project_2_user_service';
 

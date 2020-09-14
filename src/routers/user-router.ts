@@ -73,7 +73,7 @@ userRouter.patch("/update/profile/:userId", authorizationMiddleware(["User", "Ad
             let updatedUserResults = await updateUserService(updatedUser)
             res.json(updatedUserResults)
         } catch (e) {
-            next
+            next(e)
         }
     }
 })
@@ -114,7 +114,7 @@ userRouter.patch("/update/:userId", authorizationMiddleware(["Admin"], false), a
             let updatedUserResults = await updateUserService(updatedUser)
             res.json(updatedUserResults)
         } catch (e) {
-            next
+            next(e)
         }
     }
 })
